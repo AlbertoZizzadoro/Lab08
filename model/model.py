@@ -1,3 +1,5 @@
+from typing import Any
+
 from database.impianto_DAO import ImpiantoDAO
 
 '''
@@ -8,6 +10,8 @@ from database.impianto_DAO import ImpiantoDAO
 '''
 
 class Model:
+    _lista_consumi: list[Any]
+
     def __init__(self):
         self._impianti = None
         self.load_impianti()
@@ -18,6 +22,9 @@ class Model:
     def load_impianti(self):
         """ Carica tutti gli impianti e li setta nella variabile self._impianti """
         self._impianti = ImpiantoDAO.get_impianti()
+        if self._impianti is None:
+            print(" Errore durante il caricamento")
+
 
     def get_consumo_medio(self, mese:int):
         """
@@ -25,7 +32,13 @@ class Model:
         :param mese: Mese selezionato (un intero da 1 a 12)
         :return: lista di tuple --> (nome dell'impianto, media), es. (Impianto A, 123)
         """
-        # TODO
+        self._lista_consumi = []
+        for impianto in self._impianti:
+            impianto.get_consumi()
+            self._lista_consumi.append((impianto.nome, impianto.get_media(mese)))
+        return self._lista_consumi
+        
+
 
     def get_sequenza_ottima(self, mese:int):
         """

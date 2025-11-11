@@ -9,6 +9,7 @@ from model.consumo_DTO import Consumo
 class ConsumoDAO:
     @staticmethod
     def get_consumi(id_impianto) -> list[Consumo] | None:
+
         """
         Restituisce tutti i consumi di un impianto
         :return: lista di tutti i Consumi di un certo impianto
