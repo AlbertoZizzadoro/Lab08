@@ -30,3 +30,20 @@ class Impianto:
     def __repr__(self):
         return f"{self.id} | {self.nome} | Indirizzo: {self.indirizzo}"
 
+    def get_media(self, mese:int):
+        if self.lista_consumi is None:
+            self.get_consumi()
+
+        consumi_mese = []
+        for consumo in self.lista_consumi:
+            if consumo.data.month == mese:
+                consumi_mese.append(consumo)
+
+
+        if len(consumi_mese) > 0:
+            return sum(consumi_mese) / len(consumi_mese)
+        else:
+            return 0
+
+
+

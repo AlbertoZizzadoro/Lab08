@@ -59,6 +59,7 @@ class View:
             text="Consumo medio",
             tooltip="Verifica il consumo medio per impianto, nel mese selezionato",
             on_click=self.controller.get_consumo_medio
+
         )
 
         pulsante_calcolo_sequenza = ft.ElevatedButton(
