@@ -37,7 +37,7 @@ class Impianto:
         consumi_mese = []
         for consumo in self.lista_consumi:
             if consumo.data.month == mese:
-                consumi_mese.append(consumo)
+                consumi_mese.append(consumo.kwh)
 
 
         if len(consumi_mese) > 0:
